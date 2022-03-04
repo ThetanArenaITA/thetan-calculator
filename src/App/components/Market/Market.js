@@ -154,7 +154,7 @@ function Market(props) {
   }, []);
 
   function cercaHero(url, state, rarity, heroId) {
-    setHero([])
+    setHero([]);
     //console.log(urlRarity);
     if (urlRarity !== rarity && rarity !== undefined) {
       setRarity(rarity);
@@ -169,6 +169,7 @@ function Market(props) {
     if (heroId !== null && heroId !== undefined) {
       url = url + "&heroTypeIds=" + heroId;
     }
+    console.log(url);
 
     fetch(url)
       .then((response) => response.json())
@@ -186,14 +187,18 @@ function Market(props) {
     }
   }
 
-  function rarityButton(rarity) {
+  function rarityButton(rarity, fromRarity) {
     //console.log(rarity);
-    switch (stateOfSearch) {
-      case 1:
-        cercaHero(starterPack, undefined, rarity);
-        break;
-      default:
-        cercaHero(chepestItem, undefined, rarity);
+    if (fromRarity) {
+      setRarity(3)
+    } else {
+      switch (stateOfSearch) {
+        case 1:
+          cercaHero(starterPack, undefined, rarity);
+          break;
+        default:
+          cercaHero(chepestItem, undefined, rarity);
+      }
     }
   }
   function clickHero(id) {
@@ -203,18 +208,17 @@ function Market(props) {
       case 1:
         cercaHero(starterPack, undefined, undefined, id);
         openDiv(false);
-        //rarityButton(3)
+        rarityButton(3, true);
         break;
       default:
         cercaHero(chepestItem, undefined, undefined, id);
         openDiv(false);
-      //rarityButton(3)
+        rarityButton(3, true);
     }
   }
   function getId(id) {
     //console.log(id);
     setId(id);
-
     apriCalcolatore(!calcolatoreHandler);
   }
   return (
@@ -341,7 +345,7 @@ function Market(props) {
         </div>
       </div>
       <div className="heroContainer">
-        {hero.lenght !== 0
+        {hero.lenght !== 0 || hero.length !== null || hero.length !== undefined
           ? hero.map((data, index) => {
               return (
                 <HeroDiv
