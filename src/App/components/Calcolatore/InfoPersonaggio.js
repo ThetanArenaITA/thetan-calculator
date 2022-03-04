@@ -50,6 +50,7 @@ function InfoPersonaggio(props) {
 
     //console.log(costoHero)
     let battaglieRim = battaglieTotali - battaglieBruciate;
+    let vittorieNecessarie = ((costoHero - (battaglieRim - (costoHero / (6 + hero.thcBonus)))) / (6 + hero.thcBonus)).toFixed(0)
 
     info = [
       {
@@ -70,8 +71,8 @@ function InfoPersonaggio(props) {
         name: "Battaglie Rimanenti",
       },
       {
-        value: ((costoHero - (battaglieRim - (costoHero / (6 + hero.thcBonus)))) / (6 + hero.thcBonus)).toFixed(0),
-        percentage: (((costoHero - (battaglieRim - (costoHero / (6 + hero.thcBonus)))) / (6 + hero.thcBonus) * 100) / battaglieRim).toFixed(0),
+        value: vittorieNecessarie > battaglieRim ? "Non recuperabile" : vittorieNecessarie,
+        percentage: ((vittorieNecessarie * 100) / battaglieRim).toFixed(0),
         name: "Vittorie Necessarie per recuperare l'investimento",
       },
       {
@@ -106,7 +107,7 @@ function InfoPersonaggio(props) {
               <div className="resultLabel">
                 <div className="guadagnoLabel">
                   <h3 id="profittoPotenziale">
-                    {data.value} {data.usd && " THC"} {data.percentage && <span style={{color: data.percentage < 49 ? "#0dc900" : data.percentage > 55 ? "#d80000" : "#feca2e"}}>{' (' + data.percentage + '%)'}</span>}
+                    <span style={{color: data.value === "Non recuperabile" ? "#d80000" : "" }}>{data.value}</span> {data.usd && " THC"} {data.percentage && data.value !== "Non recuperabile" ? <span style={{color: data.percentage < 49 ? "#0dc900" : data.percentage > 55 ? "#d80000" : "#feca2e"}}>{' (' + data.percentage + '%)'}</span> : null}
                   </h3>
                   {data.usd && (
                     <div className="usd" id="profittoPotenzialeUSD">
