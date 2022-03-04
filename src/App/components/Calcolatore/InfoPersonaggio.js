@@ -70,8 +70,8 @@ function InfoPersonaggio(props) {
         name: "Battaglie Rimanenti",
       },
       {
-        value: (costoHero / (6 + hero.thcBonus)).toFixed(0),
-        percentage: ((((costoHero - (battaglieRim - (costoHero / (6 + hero.thcBonus)))) / (6 + hero.thcBonus)).toFixed(0) * 100) / battaglieRim).toFixed(0),
+        value: ((costoHero - (battaglieRim - (costoHero / (6 + hero.thcBonus)))) / (6 + hero.thcBonus)).toFixed(0),
+        percentage: (((costoHero - (battaglieRim - (costoHero / (6 + hero.thcBonus)))) / (6 + hero.thcBonus) * 100) / battaglieRim).toFixed(0),
         name: "Vittorie Necessarie per recuperare l'investimento",
       },
       {
