@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/thetan-calculator/static/css/main.359dd01a.css",
-    "main.js": "/thetan-calculator/static/js/main.44d846a2.js",
+    "main.js": "/thetan-calculator/static/js/main.a8a57f61.js",
     "static/js/787.b2148295.chunk.js": "/thetan-calculator/static/js/787.b2148295.chunk.js",
     "static/media/coin.png": "/thetan-calculator/static/media/coin.7d2ca6165db4b5526c76.png",
     "static/media/cart.png": "/thetan-calculator/static/media/cart.4737e2c1cc6bd51f8af9.png",
     "index.html": "/thetan-calculator/index.html",
     "main.359dd01a.css.map": "/thetan-calculator/static/css/main.359dd01a.css.map",
-    "main.44d846a2.js.map": "/thetan-calculator/static/js/main.44d846a2.js.map",
+    "main.a8a57f61.js.map": "/thetan-calculator/static/js/main.a8a57f61.js.map",
     "787.b2148295.chunk.js.map": "/thetan-calculator/static/js/787.b2148295.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.359dd01a.css",
-    "static/js/main.44d846a2.js"
+    "static/js/main.a8a57f61.js"
   ]
 }
