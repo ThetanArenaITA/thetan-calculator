@@ -66,6 +66,7 @@ function App() {
     <Routes>
       <Route index element={<Calculator thcPrice={thcPrice} players={players} />} />
       <Route path="market" element={<Market thcPrice={thcPrice} />} />
+      <Route path="profile" element={<LoginWithMetamask />} />
     </Routes>
   );
 }

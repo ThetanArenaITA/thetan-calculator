@@ -86,13 +86,13 @@ function Guadagni(props) {
           prezzoHero = rarity;
         }
         battaglieRimanenti =
-            hero.heroRanking.totalBattleCapTHC - hero.heroRanking.battleCapTHC;
+          hero.heroRanking.totalBattleCapTHC - hero.heroRanking.battleCapTHC;
         break;
       case 10:
         // se il personaggio è sul mercato
         prezzoHero = hero.sale.price.value / 100000000;
         battaglieRimanenti =
-            hero.heroRanking.totalBattleCapTHC - hero.heroRanking.battleCapTHC;
+          hero.heroRanking.totalBattleCapTHC - hero.heroRanking.battleCapTHC;
         break;
       case 11:
         // se il personaggio è in affitto
@@ -107,15 +107,12 @@ function Guadagni(props) {
     const battaglieRimanentiCalcolo = battaglieRimanenti * percentage;
     const battagliePerse = battaglieRimanenti - battaglieRimanentiCalcolo;
 
-
     //console.log(prezzoHero);
     const guadagnoPotenziale = roundNumber(
       (hero.thcBonus + 6) * battaglieRimanentiCalcolo + battagliePerse
     );
-    
-    const profittoPotenziale = roundNumber(
-      (guadagnoPotenziale - prezzoHero)
-    );
+
+    const profittoPotenziale = roundNumber(guadagnoPotenziale - prezzoHero);
     const daily = roundNumber(
       (hero.thcBonus + 6) * (hero.dailyTHCBattleConfig * percentage)
     );
@@ -129,16 +126,18 @@ function Guadagni(props) {
         value: daily,
         name: "THC al giorno",
         usd: dailyUSD,
+        owner: hero.status === 3,
       },
       {
         value: guadagnoPotenziale,
-        name: "Guadagno",
+        name: hero.status === 3 ? "Puoi venderlo a" : "Guadagno",
         usd: guadagnoUSD,
       },
       {
         value: profittoPotenziale,
         name: "Profitto",
         usd: profittoUSD,
+        owner: hero.status === 3,
       },
     ]);
   }
@@ -146,7 +145,7 @@ function Guadagni(props) {
   return (
     <div>
       <div className="mainLayout flexSpace marginTop10 maxWidth350 column">
-        <h3>Percentuale Vittorie</h3>
+        <h3>{hero.status === 3 ? "Percentuale Guadagno" : "Percentuale Vittorie"}</h3>
         <div style={{ display: "flex" }} className="flexSpace">
           <button
             style={{ backgroundColor: colore1 }}
@@ -182,6 +181,9 @@ function Guadagni(props) {
         {heroInfo ? (
           heroInfo.map((data, index) => {
             //console.log(data);
+            if (data.owner) {
+              if (data.owner === true) return null;
+            }
             return (
               <div
                 key={index}
