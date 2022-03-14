@@ -137,7 +137,6 @@ function Guadagni(props) {
         value: profittoPotenziale,
         name: "Profitto",
         usd: profittoUSD,
-        owner: hero.status === 3,
       },
     ]);
   }
