@@ -26,7 +26,7 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footerText">
-        <strong>v 2.2.3</strong>
+        <strong>v 2.3.0</strong>
       </div>
       <div className="footerText">
         Questo è un servizio totalmente gratuito, senza ADs, pubblicità o altro!
@@ -36,8 +36,9 @@ function Footer() {
       <button className="footerButton" onClick={() => getBSCAddress()}>
         {titleButton}
       </button>
-      <div style={{marginTop: 30}}>
-      <Link to="market">Experimental Market</Link>
+      <div className="flexLayout column" style={{ marginTop: 30 }}>
+        <Link  to="market">Experimental Market</Link>
+        <Link className="marginTop10" to="profilo">Experimental STATS</Link>
       </div>
     </div>
   );
