@@ -78,7 +78,7 @@ function UserInfo(props) {
         <div className="flexLayout">
           {avatar && (
             <div
-              className="avatar"
+              className="avatarProfile"
               style={{ backgroundImage: "url(" + avatar + ")" }}
             ></div>
           )}
