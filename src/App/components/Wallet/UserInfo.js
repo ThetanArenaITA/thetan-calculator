@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function UserInfo(props) {
   const info = props.data;
   const userProfile = info.userProfile;
   const statistiche = info.playerStatistic;
   const winrate = ((statistiche.victory / statistiche.battle) * 100).toFixed(2);
+  const mvpRate = ((statistiche.mvp / statistiche.victory) * 100).toFixed(2);
+  const tripleRate = ((statistiche.triple / statistiche.battle) * 100).toFixed(
+    2
+  );
+  const megaRate = ((statistiche.mega / statistiche.battle) * 100).toFixed(2);
 
-
-
-  console.log(info)
+  console.log(info);
 
   const [avatar, setAvatar] = useState(null);
 
@@ -54,7 +57,7 @@ function UserInfo(props) {
       .then((data) => {
         const avatars = data.data.avatarConfig;
         avatars.map((avt, index) => {
-          console.log(avt);
+          //console.log(avt);
           if (info.avatarId === avt.avatarId) {
             const avtURL = "https://assets.thetanarena.com/" + avt.imageAvatar;
             setAvatar(avtURL);
@@ -64,6 +67,10 @@ function UserInfo(props) {
         //console.log(data.data.avatarConfig);
       });
   }, []);
+  
+  const nameDiv = useRef()
+  const lunghezzaParola = info.username.length
+  const fontSizePrg = 1.5 - (lunghezzaParola*0.01)
 
   return (
     <div>
@@ -76,9 +83,9 @@ function UserInfo(props) {
             ></div>
           )}
         </div>
-        <div>
+        <div ref={nameDiv} style={{ maxWidth: "50%" }}>
           {" "}
-          <h2>{info.username}</h2>
+          <h2 style={{fontSize: fontSizePrg+"em"}}>{info.username}</h2>
           <h5>{info.email}</h5>
           <div>{truncate(info.address)}</div>
           <div>
@@ -95,14 +102,14 @@ function UserInfo(props) {
         <div>
           <h2>Battaglie Totali</h2>
           <div>
-            <h3>{statistiche.battle}</h3>
+            <h2>{statistiche.battle}</h2>
           </div>
         </div>
         <div className="separatore"></div>
         <div style={{ textAlign: "right" }}>
           <h2>Battaglie Vinte</h2>
           <div>
-            <h3>{statistiche.victory}</h3>
+            <h2>{statistiche.victory}</h2>
           </div>
         </div>
       </div>
@@ -111,28 +118,39 @@ function UserInfo(props) {
           <h2>WINRATE</h2>
         </div>
         <div>
-          <h3
+          <h2
             style={{
               color:
                 winrate < 48 ? "#d80000" : winrate > 51 ? "#0dc900" : "#feca2e",
             }}
           >
             {winrate}%
-          </h3>
+          </h2>
         </div>
       </div>
       <div className="mainLayout flexSpace marginTop10 maxWidth350 margin10">
         <div>
           <h2>MVP</h2>
           <div>
-            <h3>{statistiche.mvp}</h3>
+            <h2 style={{ marginBottom: 0 }}>
+              {statistiche.mvp}{" "}
+              <div style={{ fontSize: "15px" }}>
+                {mvpRate}%{" "}
+                <span style={{ fontSize: "10px", fontWeight: "normal" }}>
+                  delle vittorie
+                </span>
+              </div>
+            </h2>
           </div>
         </div>
         <div className="separatore"></div>
         <div style={{ textAlign: "right" }}>
           <h2>STREAK</h2>
           <div>
-            <h3>{statistiche.streak}</h3>
+            <h2 style={{ marginBottom: 0 }}>{statistiche.streak}</h2>
+            <span style={{ fontSize: "10px", fontWeight: "normal" }}>
+              vittorie consecutive
+            </span>
           </div>
         </div>
       </div>
@@ -140,14 +158,30 @@ function UserInfo(props) {
         <div>
           <h2>TRIPLE KILL</h2>
           <div>
-            <h3>{statistiche.triple}</h3>
+            <h2 style={{ marginBottom: 0 }}>
+              {statistiche.triple}{" "}
+              <div style={{ fontSize: "15px" }}>
+                {tripleRate}%{" "}
+                <span style={{ fontSize: "10px", fontWeight: "normal" }}>
+                  delle battaglie
+                </span>
+              </div>
+            </h2>
           </div>
         </div>
         <div className="separatore"></div>
         <div style={{ textAlign: "right" }}>
           <h2>MEGA KILL</h2>
           <div>
-            <h3>{statistiche.mega}</h3>
+            <h2 style={{ marginBottom: 0 }}>
+              {statistiche.mega}{" "}
+              <div style={{ fontSize: "15px", fontWeight: "normal" }}>
+                {megaRate}%{" "}
+                <span style={{ fontSize: "10px", fontWeight: "normal" }}>
+                  delle battaglie
+                </span>
+              </div>
+            </h2>
           </div>
         </div>
       </div>

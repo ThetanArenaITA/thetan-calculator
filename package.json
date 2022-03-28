@@ -1,6 +1,6 @@
 {
   "name": "thetancalculator",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "homepage": "https://thetanarenaita.github.io/thetan-calculator",
   "private": true,
   "dependencies": {
