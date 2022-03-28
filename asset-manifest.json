@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/thetan-calculator/static/css/main.ee948e99.css",
-    "main.js": "/thetan-calculator/static/js/main.606000a0.js",
+    "main.css": "/thetan-calculator/static/css/main.ff74aead.css",
+    "main.js": "/thetan-calculator/static/js/main.96be33b8.js",
     "static/js/787.b2148295.chunk.js": "/thetan-calculator/static/js/787.b2148295.chunk.js",
     "static/media/coin.png": "/thetan-calculator/static/media/coin.7d2ca6165db4b5526c76.png",
     "static/media/cart.png": "/thetan-calculator/static/media/cart.4737e2c1cc6bd51f8af9.png",
     "index.html": "/thetan-calculator/index.html",
-    "main.ee948e99.css.map": "/thetan-calculator/static/css/main.ee948e99.css.map",
-    "main.606000a0.js.map": "/thetan-calculator/static/js/main.606000a0.js.map",
+    "main.ff74aead.css.map": "/thetan-calculator/static/css/main.ff74aead.css.map",
+    "main.96be33b8.js.map": "/thetan-calculator/static/js/main.96be33b8.js.map",
     "787.b2148295.chunk.js.map": "/thetan-calculator/static/js/787.b2148295.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee948e99.css",
-    "static/js/main.606000a0.js"
+    "static/css/main.ff74aead.css",
+    "static/js/main.96be33b8.js"
   ]
 }
